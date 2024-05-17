@@ -8,22 +8,76 @@
 import SwiftUI
 
 struct TimeView: View {
+    
+    @State var timeRemaining: Int = .STUDY_TIME
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @State private var isTimerPaused = true
+    
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                
+                HStack {
+                    Button(isTimerPaused ? "Start" : "Stop") {
+                        withAnimation(.easeIn){
+                            isTimerPaused.toggle()
+                        }
+                    }
+                        .padding()
+                        .frame(width: geometry.size.width*0.32)
+                        .background(isTimerPaused ? .green : .red)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    
+                    Spacer()
+                    Button("Reset") {
+                        withAnimation{
+                            restartTimer()
+                        }
+
+                    }
+                        .padding()
+                        .frame(width: geometry.size.width*0.32)
+                        .background(Color.orange)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                }
+                .frame(maxWidth: geometry.size.width * 0.7)
+                .opacity(0.9)
+                .font(.system(size: geometry.size.width*0.08))
+                .padding(.bottom)
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(Color.tomato)
+                    .foregroundStyle(Color.Anti_flash_white.opacity(isTimerPaused ? 0.8 : 1))
                     .frame(width: geometry.size.width * 0.70, height: geometry.size.height * 0.25)
                     .overlay {
-                        RoundedRectangle(cornerRadius: 10).stroke(Color.onyx, lineWidth: 0.5)
+//                        RoundedRectangle(cornerRadius: 10).stroke(Color.onyx, lineWidth: 0.5)
                         
-                        Text("12:22")
+                        Text("\(timeRemaining.formattedTime())")
                             .font(.system(size: geometry.size.width * 0.2))
-                            .foregroundStyle(Color.onyx)
+                            .onReceive(timer) { _ in
+                                updateTimer()
+                            }
                     }
-                    .shadow(radius: 15)
+                    .shadow(radius: 10)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .foregroundStyle(Color.onyx)
+        }
+    }
+    
+    func restartTimer() {
+        isTimerPaused = true
+        timeRemaining = .STUDY_TIME
+    }
+    
+    func updateTimer(){
+        if timeRemaining > 0  && !isTimerPaused {
+            timeRemaining -= 1
+        }
+        else {
+            withAnimation{
+                restartTimer()
+            }
         }
     }
 }
