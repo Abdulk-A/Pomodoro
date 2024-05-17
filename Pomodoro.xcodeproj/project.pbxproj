@@ -15,6 +15,7 @@
 		B8393CB02BE80ACB00D65E8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8393CAF2BE80ACB00D65E8A /* Preview Assets.xcassets */; };
 		B88E35D52BF6D7EA000DD12D /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88E35D42BF6D7EA000DD12D /* Int.swift */; };
 		B88E35D72BF700B1000DD12D /* TabbedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88E35D62BF700B1000DD12D /* TabbedItems.swift */; };
+		B88E35DB2BF73EBB000DD12D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88E35DA2BF73EBB000DD12D /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B8393CAF2BE80ACB00D65E8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B88E35D42BF6D7EA000DD12D /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		B88E35D62BF700B1000DD12D /* TabbedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedItems.swift; sourceTree = "<group>"; };
+		B88E35DA2BF73EBB000DD12D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			children = (
 				B8393CAA2BE80ACA00D65E8A /* ContentView.swift */,
 				B8393CA82BE80ACA00D65E8A /* PomodoroApp.swift */,
+				B88E35DA2BF73EBB000DD12D /* SettingsView.swift */,
 				B8356D2A2BF6A06100D7C96B /* TimeView.swift */,
 			);
 			path = View;
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88E35DB2BF73EBB000DD12D /* SettingsView.swift in Sources */,
 				B8393CAB2BE80ACA00D65E8A /* ContentView.swift in Sources */,
 				B8356D292BF6809300D7C96B /* Colors.swift in Sources */,
 				B88E35D52BF6D7EA000DD12D /* Int.swift in Sources */,

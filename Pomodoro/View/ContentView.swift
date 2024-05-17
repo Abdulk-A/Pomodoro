@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-
-
 struct ContentView: View {
     
     @State private var selectedTab = 0
@@ -18,6 +15,7 @@ struct ContentView: View {
             ZStack(alignment: .bottom) {
                 TabView(selection: $selectedTab) {
                     TimeView().tag(0)
+                    SettingsView().tag(1)
                 }
             }
             ZStack {
@@ -37,9 +35,10 @@ struct ContentView: View {
             .cornerRadius(35)
             .padding(.horizontal, 26)
             .padding(.bottom)
-
+            
         }
         .ignoresSafeArea()
+
     }
 }
 
