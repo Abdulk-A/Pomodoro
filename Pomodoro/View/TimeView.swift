@@ -50,8 +50,6 @@ struct TimeView: View {
                     .foregroundStyle(Color.Anti_flash_white.opacity(isTimerPaused ? 0.8 : 1))
                     .frame(width: geometry.size.width * 0.70, height: geometry.size.height * 0.25)
                     .overlay {
-//                        RoundedRectangle(cornerRadius: 10).stroke(Color.onyx, lineWidth: 0.5)
-                        
                         Text("\(timeRemaining.formattedTime())")
                             .font(.system(size: geometry.size.width * 0.2))
                             .onReceive(timer) { _ in
@@ -69,16 +67,16 @@ struct TimeView: View {
         isTimerPaused = true
         timeRemaining = .STUDY_TIME
     }
+    func pauseTimer() {
+        isTimerPaused = false
+    }
     
     func updateTimer(){
+        
         if timeRemaining > 0  && !isTimerPaused {
             timeRemaining -= 1
         }
-        else {
-            withAnimation{
-                restartTimer()
-            }
-        }
+
     }
 }
 
