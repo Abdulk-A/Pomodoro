@@ -10,12 +10,14 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selectedTab = 0
+    @State private var studyTime = 25
+    @State private var breakTime = 5
     var body: some View {
         VStack {
             ZStack(alignment: .bottom) {
                 TabView(selection: $selectedTab) {
-                    TimeView().tag(0)
-                    SettingsView().tag(1)
+                    TimeView(studyTime:  studyTime.minToSec, breakTime: breakTime.minToSec).tag(0)
+                    SettingsView(studyMins: $studyTime, brekaMins: $breakTime).tag(1)
                 }
             }
             ZStack {

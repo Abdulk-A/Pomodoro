@@ -15,6 +15,9 @@ struct TimeView: View {
     @State private var isTimerPaused = true
     @State private var isBreak = false
     
+    let studyTime: Int
+    let breakTime: Int
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -59,7 +62,7 @@ struct TimeView: View {
                     .padding(.bottom, 5)
                 Button(isBreak ? "Study" : "Break"){
                     isBreak.toggle()
-                    timeRemaining = isBreak ? .BREAK_TIME : .STUDY_TIME
+                    timeRemaining = isBreak ? breakTime : studyTime
                 }
                     .font(.largeTitle)
                     .padding(5)
@@ -76,7 +79,7 @@ struct TimeView: View {
     
     func restartTimer() {
         isTimerPaused = true
-        timeRemaining = isBreak ? .BREAK_TIME : .STUDY_TIME
+        timeRemaining = isBreak ? breakTime : studyTime
     }
     func pauseTimer() {
         isTimerPaused = false
@@ -85,7 +88,7 @@ struct TimeView: View {
     func updateTimer(){
         
         if timeRemaining == 0 {
-            timeRemaining = isBreak ? .STUDY_TIME : .BREAK_TIME
+            timeRemaining = isBreak ? studyTime : breakTime
             isBreak.toggle()
             isTimerPaused = true
         }
@@ -97,5 +100,5 @@ struct TimeView: View {
 }
 
 #Preview {
-    TimeView()
+    TimeView(studyTime: 25, breakTime: 5)
 }

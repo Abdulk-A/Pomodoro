@@ -8,6 +8,12 @@
 import Foundation
 
 extension Int {
+    
+    //minutes to seconds
+    var minToSec: Int {
+        self * 60
+    }
+    
     //formatting int to show time in minutes and seconds in this format mm:ss
     func formattedTime() -> String {
         let min = Int(self/60)
